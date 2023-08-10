@@ -25,6 +25,12 @@ jobs:
     - name: Build Binary
       run: |
         pyinstaller chdb-cli.py --strip --noupx
+    - uses: alice-biometrics/release-creator/@v1.0.5
+      continue-on-error: true
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        version: ${{ github.event.inputs.TAG_NAME || github.event.release.tag_name }}
+        description: ${{ github.event.inputs.TAG_NAME || github.event.release.tag_name }}
     - name: Upload release
       if: github.event_name != 'pull_request'
       uses: boxpositron/upload-multiple-releases@1.0.7
