@@ -1,4 +1,4 @@
-<img src="https://github.com/chdb-io/chdb/raw/main/docs/_static/snake-chdb.png" width=200>
+<img src="https://github.com/chdb-io/chdb/raw/main/docs/_static/snake-chdb.png" width=300>
 
 [![PyPI](https://img.shields.io/pypi/v/chdb.svg)](https://pypi.org/project/chdb/)
 [![Downloads](https://static.pepy.tech/badge/chdb)](https://pepy.tech/project/chdb)
