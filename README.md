@@ -34,7 +34,7 @@ CHDB VERSION: 0.11.5
 
 ##### Custom DB Folder
 ```sql
-# ./chdb-cli.py /tmp/chdb
+# ./chdb-cli /tmp/chdb
 
 Connected to local database /tmp/chdb
 CTRL-D to Exit. ESC+ENTER or ; to Run.
