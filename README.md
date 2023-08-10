@@ -33,9 +33,10 @@ CHDB VERSION: 0.11.5
 ```
 
 ##### Custom DB Folder
+```
+./chdb-cli /tmp/chdb
+```
 ```sql
-# ./chdb-cli /tmp/chdb
-
 Connected to local database /tmp/chdb
 CTRL-D to Exit. ESC+ENTER or ; to Run.
 CHDB VERSION: 0.11.5
