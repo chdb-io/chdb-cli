@@ -53,7 +53,7 @@ def main(database):
       print("Connected to "+ database )
     else:
       connection = chs.Session()
-      print("Connected to auto-clean temporary ddatabase.")
+      print("Connected to auto-clean temporary database.")
 
     history = FileHistory(".chdb_history")
 
