@@ -7,11 +7,12 @@
 # chDB-CLI
 Simple CLI / REPL for [chdb](https://chdb.io) made in Python
 
-#### Usage
+#### Setup
 ```bash
 wget https://raw.githubusercontent.com/lmangani/chdb-cli/main/chdb-cli.py -O chdb-cli
 chmod +x chdb-cli
 ```
+#### Usage
 
 ##### Temporary DB Folder
 ```
