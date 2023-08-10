@@ -20,7 +20,7 @@ chmod +x chdb-cli
 
 ```sql
 
-Connected to auto-clean temporary ddatabase.
+Connected to auto-clean temporary database.
 CTRL-D to Exit. ESC+ENTER or ; to Run.
 CHDB VERSION: 0.11.5
 
