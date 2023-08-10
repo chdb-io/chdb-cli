@@ -24,7 +24,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Build Binary
       run: |
-        pyinstaller chdb-cli.py --strip --noupx
+        pyinstaller chdb-cli.py --strip --noupx --onefile --nowindow
     - uses: alice-biometrics/release-creator/@v1.0.5
       continue-on-error: true
       with:
