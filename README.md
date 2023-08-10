@@ -8,11 +8,23 @@
 Python CLI/REPL for [chdb](https://chdb.io)
 
 ##### Usage
-```
+```bash
 wget https://raw.githubusercontent.com/lmangani/chdb-cli/main/chdb-cli.py -O chdb-cli
 chmod +x chdb-cli
 ```
 
 ```
 ./chdb-cli
+```
+
+```sql
+CTRL-D to Exit.
+chDB "23.6.1.1"
+
+:) SELECT 'hello chdb', version() as version;
+┏━━━━━━━━━━━━━━┳━━━━━━━━━━┓
+┃ 'hello chdb' ┃ version  ┃
+┡━━━━━━━━━━━━━━╇━━━━━━━━━━┩
+│ hello chdb   │ 23.6.1.1 │
+└──────────────┴──────────┘
 ```
