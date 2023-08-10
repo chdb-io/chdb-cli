@@ -4,8 +4,8 @@
 [![Downloads](https://static.pepy.tech/badge/chdb)](https://pepy.tech/project/chdb)
 [![Discord](https://img.shields.io/discord/1098133460310294528?logo=Discord)](https://discord.gg/Njw5YXSPPc)
 
-# chdb-cli
-Python CLI/REPL for [chdb](https://chdb.io)
+# chDB-CLI
+Simple CLI / REPL for [chdb](https://chdb.io) made in Python
 
 #### Usage
 ```bash
