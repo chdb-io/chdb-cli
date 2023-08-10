@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import chdb
 from chdb import session as chs
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
@@ -7,7 +8,7 @@ from prompt_toolkit.lexers import PygmentsLexer
 from prompt_toolkit.styles import Style
 from pygments.lexers.sql import SqlLexer
 from prompt_toolkit.key_binding import KeyBindings
-from prompt_toolkit.application import run_in_terminal
+from prompt_toolkit.history import FileHistory
 
 sql_completer = WordCompleter([
     'abort', 'action', 'add', 'after', 'all', 'alter', 'analyze', 'and',
@@ -54,12 +55,14 @@ def main(database):
       connection = chs.Session()
       print("Connected to auto-clean temporary ddatabase.")
 
-    session = PromptSession(
-        lexer=PygmentsLexer(SqlLexer), completer=sql_completer, style=style)
+    history = FileHistory(".chdb_history")
 
-    version = connection.query("SELECT version()", "CSV")
-    print("CTRL-D to Exit.")
-    print("chDB " + str(version))
+    session = PromptSession(
+        lexer=PygmentsLexer(SqlLexer), completer=sql_completer, style=style, history=history)
+
+    print("CTRL-D to Exit. ESC+ENTER or ; to Run.")
+    print("CHDB VERSION: " + chdb.__version__)
+    print()
 
     while True:
         try:
@@ -68,8 +71,6 @@ def main(database):
             continue  # Control-C pressed. Try again.
         except EOFError:
             break  # Control-D pressed.
-        if text == 'exit':
-          break
 
         else:
             try:
@@ -78,7 +79,7 @@ def main(database):
                 print(repr(e))
             else:
                 print(message)
-                #for message in messages:
+                # for message in messages:
                 #    print(message)
 
     print('')
