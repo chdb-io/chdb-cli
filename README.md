@@ -50,6 +50,7 @@ CHDB VERSION: 0.11.5
 :) CREATE VIEW db_xxx.view_xxx AS SELECT * FROM db_xxx.log_table_xxx LIMIT 4;
 
 :) SELECT * FROM db_xxx.view_xxx;
+
 ┏━━━┳━━━┓
 ┃ x ┃ y ┃
 ┡━━━╇━━━┩
