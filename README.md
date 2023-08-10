@@ -7,17 +7,20 @@
 # chdb-cli
 Python CLI/REPL for [chdb](https://chdb.io)
 
-##### Usage
+#### Usage
 ```bash
 wget https://raw.githubusercontent.com/lmangani/chdb-cli/main/chdb-cli.py -O chdb-cli
 chmod +x chdb-cli
 ```
 
+##### Temporary DB Folder
 ```
 ./chdb-cli
 ```
 
 ```sql
+
+Connected to auto-clean temporary ddatabase.
 CTRL-D to Exit.
 chDB "23.6.1.1"
 
@@ -27,4 +30,34 @@ chDB "23.6.1.1"
 ┡━━━━━━━━━━━━━━╇━━━━━━━━━━┩
 │ hello chdb   │ 23.6.1.1 │
 └──────────────┴──────────┘
+```
+
+##### Custom DB Folder
+```sql
+# ./chdb-cli.py /tmp/chdb
+
+Connected to /tmp/chdb
+CTRL-D to Exit.
+chDB "23.6.1.1"
+
+:) CREATE DATABASE IF NOT EXISTS db_xxx ENGINE = Atomic;
+
+:) CREATE TABLE IF NOT EXISTS db_xxx.log_table_xxx (x String, y Int) ENGINE = Log;
+
+:) INSERT INTO db_xxx.log_table_xxx VALUES ('a', 1), ('b', 3), ('c', 2), ('d', 5);
+
+:) CREATE VIEW db_xxx.view_xxx AS SELECT * FROM db_xxx.log_table_xxx LIMIT 4;
+
+:) SELECT * FROM db_xxx.view_xxx;
+┏━━━┳━━━┓
+┃ x ┃ y ┃
+┡━━━╇━━━┩
+│ a │ 1 │
+├───┼───┤
+│ b │ 3 │
+├───┼───┤
+│ c │ 2 │
+├───┼───┤
+│ d │ 5 │
+└───┴───┘
 ```
