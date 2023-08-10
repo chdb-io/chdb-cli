@@ -1,0 +1,3 @@
+chdb
+prompt_toolkit
+pygments
