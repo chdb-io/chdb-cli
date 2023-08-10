@@ -2,12 +2,13 @@
 import sys
 from chdb import session as chs
 
-
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.lexers import PygmentsLexer
 from prompt_toolkit.styles import Style
 from pygments.lexers.sql import SqlLexer
+from prompt_toolkit.key_binding import KeyBindings
+from prompt_toolkit.application import run_in_terminal
 
 sql_completer = WordCompleter([
     'abort', 'action', 'add', 'after', 'all', 'alter', 'analyze', 'and',
@@ -17,7 +18,7 @@ sql_completer = WordCompleter([
     'current_time', 'current_timestamp', 'database', 'default',
     'deferrable', 'deferred', 'delete', 'desc', 'detach', 'distinct',
     'drop', 'each', 'else', 'end', 'escape', 'except', 'exclusive',
-    'exists', 'explain', 'fail', 'for', 'foreign', 'from', 'full', 'glob',
+    'exists', 'explain', 'fail', 'for', 'format', 'foreign', 'from', 'full', 'glob',
     'group', 'having', 'if', 'ignore', 'immediate', 'in', 'index',
     'indexed', 'initially', 'inner', 'insert', 'instead', 'intersect',
     'into', 'is', 'isnull', 'join', 'key', 'left', 'like', 'limit',
@@ -37,14 +38,27 @@ style = Style.from_dict({
     'scrollbar.button': 'bg:#222222',
 })
 
+bindings = KeyBindings()
+
+@bindings.add(';')
+def _(event):
+    "Execute on ;"
+    event.app.current_buffer.insert_text(";")
+    b = event.current_buffer
+    b.validate_and_handle()
+
 def main(database):
     connection = chs.Session()
     session = PromptSession(
         lexer=PygmentsLexer(SqlLexer), completer=sql_completer, style=style)
 
+    version = connection.query("SELECT version()", "CSV")
+    print("CTRL-D to Exit.")
+    print("chDB " + str(version))
+
     while True:
         try:
-            text = session.prompt('> ')
+            text = session.prompt(':) ', multiline=True, key_bindings=bindings)
         except KeyboardInterrupt:
             continue  # Control-C pressed. Try again.
         except EOFError:
@@ -62,7 +76,7 @@ def main(database):
                 #for message in messages:
                 #    print(message)
 
-    print('GoodBye!')
+    print('')
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
