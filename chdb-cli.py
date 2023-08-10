@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import sys
 from chdb import session as chs
-
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.lexers import PygmentsLexer
@@ -48,7 +47,13 @@ def _(event):
     b.validate_and_handle()
 
 def main(database):
-    connection = chs.Session()
+    if database:
+      connection = chs.Session(database)
+      print("Connected to "+ database )
+    else:
+      connection = chs.Session()
+      print("Connected to auto-clean temporary ddatabase.")
+
     session = PromptSession(
         lexer=PygmentsLexer(SqlLexer), completer=sql_completer, style=style)
 
@@ -80,7 +85,7 @@ def main(database):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        db = ':memory:'
+        db = ''
     else:
         db = sys.argv[1]
 
