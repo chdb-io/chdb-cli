@@ -40,7 +40,7 @@ jobs:
         release_config: |
             ./dist/chdb-cli/chdb-cli
         tag_name: ${{ github.event.inputs.TAG_NAME || github.event.release.tag_name }}
-        release_name: chdbcli_${{ github.event.inputs.TAG_NAME || github.event.release.tag_name }}
+        release_name: ${{ github.event.inputs.TAG_NAME || github.event.release.tag_name }}
         draft: false
         prerelease: false
         overwrite: true   
