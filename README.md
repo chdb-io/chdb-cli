@@ -21,8 +21,8 @@ chmod +x chdb-cli
 ```sql
 
 Connected to auto-clean temporary ddatabase.
-CTRL-D to Exit.
-chDB "23.6.1.1"
+CTRL-D to Exit. ESC+ENTER or ; to Run.
+CHDB VERSION: 0.11.5
 
 :) SELECT 'hello chdb', version() as version;
 ┏━━━━━━━━━━━━━━┳━━━━━━━━━━┓
@@ -36,9 +36,9 @@ chDB "23.6.1.1"
 ```sql
 # ./chdb-cli.py /tmp/chdb
 
-Connected to /tmp/chdb
-CTRL-D to Exit.
-chDB "23.6.1.1"
+Connected to local database /tmp/chdb
+CTRL-D to Exit. ESC+ENTER or ; to Run.
+CHDB VERSION: 0.11.5
 
 :) CREATE DATABASE IF NOT EXISTS db_xxx ENGINE = Atomic;
 
