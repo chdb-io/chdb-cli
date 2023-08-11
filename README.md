@@ -13,6 +13,8 @@ wget https://raw.githubusercontent.com/lmangani/chdb-cli/main/chdb-cli.py -O chd
 chmod +x chdb-cli
 ```
 #### Usage
+By default, chDB-cli will create a temporary, self-cleaning database folder for your data.<br>
+To open or create a persistent database, simply include a database folder path as a command line argument.
 
 ##### Temporary DB Folder
 ```
