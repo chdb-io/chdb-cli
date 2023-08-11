@@ -66,3 +66,7 @@ CHDB VERSION: 0.11.5
 │ d │ 5 │
 └───┴───┘
 ```
+
+#### CLI Screenshot
+
+![image](https://github.com/chdb-io/chdb-cli/assets/1423657/97a4fca0-ad8c-4c67-bc33-6f406656adb3)
