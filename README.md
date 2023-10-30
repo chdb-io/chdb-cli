@@ -9,7 +9,7 @@ Simple CLI / REPL for [chdb](https://chdb.io) made in Python
 
 #### Setup
 ```bash
-wget https://raw.githubusercontent.com/lmangani/chdb-cli/main/chdb-cli.py -O chdb-cli
+wget https://raw.githubusercontent.com/chdb-io/chdb-cli/main/chdb-cli.py -O chdb-cli
 chmod +x chdb-cli
 ```
 #### Usage
